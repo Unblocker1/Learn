@@ -220,83 +220,168 @@
 //   }
 // }
 
-function calculateVolumeAndArea(a) {
-  return `Объем куба: ${a*a*a}, площадь всей поверхности: ${a*a*6}`
-}
-console.log(calculateVolumeAndArea(5))
-
-function getCoupeNumber(a) {
-  if (typeof(a) != 'number' || a < 0 || !Number.isInteger(a)) return console.log("Ошибка. Проверьте правильность введенного номера места")
-
-  if (a === 0 || a > 36) return console.log("Таких мест в вагоне не существует")
-
-  return Math.ceil(a / 4)
-}
-getCoupeNumber(33)
-getCoupeNumber(7)
-getCoupeNumber(300)
-getCoupeNumber(0)
-getCoupeNumber(7.7)
-getCoupeNumber(-10)
-getCoupeNumber('Hello')
-
-// Место для первой задачи
-function getTimeFromMinutes(count) {
-  if (count < 0 || !Number.isInteger(count) || typeof(count) != 'number') return "Ошибка, проверьте данные"
-  let hours = Math.floor(count/60),
-      minutes = count%60;
-  if (hours === 1) return `Это 1 час и ${minutes} минут`
-  if (hours > 1 && hours < 5 ) return `Это ${hours} часа и ${minutes} минут`
-  return `Это ${hours} часов и ${minutes} минут`
-  
-}
-console.log(getTimeFromMinutes(150))
-
-// Место для второй задачи
-function findMaxNumber(a,b,c,d) {
-  if ( typeof(a) != 'number' || typeof(b) != 'number' || typeof(c) != 'number' || typeof(d) != 'number') return 0
-  return Math.max(a,b,c,d)
-}
-
-console.log(findMaxNumber(1, 5, 6.6, 11))
-
-console.log(typeof('5', 5, '1'))
-
-function fib(num) {
-  if (typeof(num) != 'number' || num <= 0 || !Number.isInteger(num)) return '';
-
-  let first = 0,
-        second = 1,
-        res = ''
-  
-  for (let i = 0; i < num; i++) {
-    if(i + 1 === num) {
-      res += `${first}`
-    }
-  }
-}
-
-const options = {
-  name: 'test',
-  widht: 1024,
-  height: 1024,
-  colors: {
-    border: 'black',
-    bg: 'red'
-  },
-  makeTest: function() {
-    console.log('Ky')
-  }
-}
-
-options.makeTest()
-
-const {border, bg} = options.colors
-
-// for (let key in options) {
-//   if (typeof(options[key]) === 'object') {
-//     for( let i in options[key]) {
-//       console.log(`Свойство ${i}: ${options[key][i]}`)
-//     }
-//   } else console.log(`Свойство ${key}: ${options[key]}`)
+// function calculateVolumeAndArea(a) {
+//   return `Объем куба: ${a*a*a}, площадь всей поверхности: ${a*a*6}`
 // }
+// console.log(calculateVolumeAndArea(5))
+
+// function getCoupeNumber(a) {
+//   if (typeof(a) != 'number' || a < 0 || !Number.isInteger(a)) return console.log("Ошибка. Проверьте правильность введенного номера места")
+
+//   if (a === 0 || a > 36) return console.log("Таких мест в вагоне не существует")
+
+//   return Math.ceil(a / 4)
+// }
+// getCoupeNumber(33)
+// getCoupeNumber(7)
+// getCoupeNumber(300)
+// getCoupeNumber(0)
+// getCoupeNumber(7.7)
+// getCoupeNumber(-10)
+// getCoupeNumber('Hello')
+
+// // Место для первой задачи
+// function getTimeFromMinutes(count) {
+//   if (count < 0 || !Number.isInteger(count) || typeof(count) != 'number') return "Ошибка, проверьте данные"
+//   let hours = Math.floor(count/60),
+//       minutes = count%60;
+//   if (hours === 1) return `Это 1 час и ${minutes} минут`
+//   if (hours > 1 && hours < 5 ) return `Это ${hours} часа и ${minutes} минут`
+//   return `Это ${hours} часов и ${minutes} минут`
+  
+// }
+// console.log(getTimeFromMinutes(150))
+
+// // Место для второй задачи
+// function findMaxNumber(a,b,c,d) {
+//   if ( typeof(a) != 'number' || typeof(b) != 'number' || typeof(c) != 'number' || typeof(d) != 'number') return 0
+//   return Math.max(a,b,c,d)
+// }
+
+// console.log(findMaxNumber(1, 5, 6.6, 11))
+
+// console.log(typeof('5', 5, '1'))
+
+// function fib(num) {
+//   if (typeof(num) != 'number' || num <= 0 || !Number.isInteger(num)) return '';
+
+//   let first = 0,
+//         second = 1,
+//         res = ''
+  
+//   for (let i = 0; i < num; i++) {
+//     if(i + 1 === num) {
+//       res += `${first}`
+//     }
+//   }
+// }
+
+// const options = {
+//   name: 'test',
+//   widht: 1024,
+//   height: 1024,
+//   colors: {
+//     border: 'black',
+//     bg: 'red'
+//   },
+//   makeTest: function() {
+//     console.log('Ky')
+//   }
+// }
+
+// options.makeTest()
+
+// const {border, bg} = options.colors
+
+// // for (let key in options) {
+// //   if (typeof(options[key]) === 'object') {
+// //     for( let i in options[key]) {
+// //       console.log(`Свойство ${i}: ${options[key][i]}`)
+// //     }
+// //   } else console.log(`Свойство ${key}: ${options[key]}`)
+// // }
+
+// const personalPlanPeter = {
+//   name: "Peter",
+//   age: "29",
+//   skills: {
+//       languages: ['ru', 'eng'],
+//       programmingLangs: {
+//           js: '20%',
+//           php: '10%'
+//       },
+//       exp: '1 month'
+//   },
+//   showAgeAndLangs: function(obj) {
+//     let {age} = obj.age;
+//     let {languages} = obj.skills;
+//     let res = `Мне ${age} и я владею языками:`;
+    
+//     languages.forEach(function(elem) {
+//         res += ` ${elem.toUpperCase()}`
+//     })
+//     return res
+// }
+// };
+
+// personalPlanPeter.showAgeAndLangs(personalPlanPeter)
+
+// function showExperience(plan) {
+
+// }
+
+// function showProgrammingLangs(plan) {
+//   const {programmingLangs} = plan.skills;
+//   let res = '';
+//   for (let i in programmingLangs) {
+//       res+= `Язык ${i} изучен на ${programmingLangs[i]} `
+//   }
+//   return res
+// }
+
+// console.log(showProgrammingLangs(personalPlanPeter))
+
+// const num = [1, 3, 5]
+
+// function log(a, b, c) {
+//   console.log(a)
+//   console.log(b)
+//   console.log(c)
+// }
+
+// log(...num)
+
+// const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+// function standardizeStrings(arr) {
+//     return arr.join('\n').toLowerCase()
+// }
+
+// console.log(standardizeStrings(favoriteCities))
+
+const someString = 'This is some strange string';
+
+function reverse(str) {
+  if (typeof str != 'string') return "Ошибка!"
+  return str.split('').reverse().join('')
+}
+
+console.log(reverse(someString))
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+let arr = baseCurrencies.concat(...additionalCurrencies)
+
+
+function availableCurr(arr, missingCurr) {
+  if (arr.length === 0) return 'Нет доступных валют'
+  let res = 'Доступные валюты:\n';
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === missingCurr) continue
+    res += `${arr[i]}\n`
+  }
+  return res
+}
+
+console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'))
