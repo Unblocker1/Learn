@@ -359,29 +359,107 @@
 
 // console.log(standardizeStrings(favoriteCities))
 
-const someString = 'This is some strange string';
+// const someString = 'This is some strange string';
 
-function reverse(str) {
-  if (typeof str != 'string') return "Ошибка!"
-  return str.split('').reverse().join('')
-}
+// function reverse(str) {
+//   if (typeof str != 'string') return "Ошибка!"
+//   return str.split('').reverse().join('')
+// }
 
-console.log(reverse(someString))
+// console.log(reverse(someString))
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
-let arr = baseCurrencies.concat(...additionalCurrencies)
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// let arr = baseCurrencies.concat(...additionalCurrencies)
 
 
-function availableCurr(arr, missingCurr) {
-  if (arr.length === 0) return 'Нет доступных валют'
-  let res = 'Доступные валюты:\n';
+// function availableCurr(arr, missingCurr) {
+//   if (arr.length === 0) return 'Нет доступных валют'
+//   let res = 'Доступные валюты:\n';
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === missingCurr) continue
-    res += `${arr[i]}\n`
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === missingCurr) continue
+//     res += `${arr[i]}\n`
+//   }
+//   return res
+// }
+
+// console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'))
+
+// 28.10
+
+const soldier = {
+  health: 400,
+  armor: 100,
+  sayHello: function() {
+    console.log("Hi")
   }
-  return res
+};
+
+const john = Object.create(soldier)
+
+// const john = {
+//   health: 100
+// }
+
+// john.__proto__ = soldier; //Устаревший формат. soldier стал прототипом john
+
+Object.setPrototypeOf(john, soldier)
+
+john.sayHello()
+
+//практика часть 4
+
+const personalMovieDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+  start: function() {
+    personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '')
+
+    while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+      personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '')
+    }
+  },
+  rememberMyFilms: function() {
+    for (let i = 0; i < 2; i++) {
+      const a = prompt('Один из последних просмотренных фильмов?').trim(),
+            b = +prompt('Насколько оцените его?');
+    
+      if (a != '' && b != '' && a != null && b != null && a.length < 50) {
+        personalMovieDB.movies[a] = b; 
+      } else i--
+    }
+  },
+  detectPerconalLevel: function() {
+    if (personalMovieDB.count < 10) {
+      console.log("Просмотрено довольно мало фильмов");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+      console.log("Вы классический зритель");
+    } else if (personalMovieDB.count > 30) {
+      console.log("Вы киноман")
+    } else console.log("Произошла ошибка")
+  },
+  showMyBD: function(hidden) {
+    if (!hidden) console.log(personalMovieDB)
+  },
+  toggleVisibleMyBD: function() {
+    (personalMovieDB.privat === false) ? personalMovieDB.privat = true : personalMovieDB.privat = false
+  },
+  writeYourGenres: function() {
+    for (let i = 1; i < 4; i++) {
+      let genre = prompt(`Ваш любимый жанр под номером ${i}`)
+
+      if (typeof(genre) != 'string' || genre === '') i-- 
+
+      personalMovieDB.genres[i-1] = genre;
+    }
+    personalMovieDB.genres.forEach((name, num) => {
+      console.log(`Ваш жанр ${num+1} - это ${name}`)
+    });
+  }
 }
 
-console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'))
+personalMovieDB.writeYourGenres()
